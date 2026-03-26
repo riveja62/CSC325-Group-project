@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+   <children>
+      <Button layoutX="147.0" layoutY="285.0" mnemonicParsing="false" text="Go Back" />
+      <Button layoutX="300.0" layoutY="285.0" mnemonicParsing="false" text="Login" />
+      <TextField layoutX="186.0" layoutY="175.0" />
+      <TextField layoutX="186.0" layoutY="219.0" />
+      <Label layoutX="123.0" layoutY="179.0" text="Username" />
+      <Label layoutX="127.0" layoutY="223.0" text="Password" />
+      <Label layoutX="148.0" layoutY="46.0" prefHeight="83.0" prefWidth="267.0" text="Please Login with your username and password" wrapText="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
