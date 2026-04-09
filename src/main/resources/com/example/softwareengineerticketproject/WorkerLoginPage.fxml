@@ -2,16 +2,20 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
-   <children>
-      <Button layoutX="166.0" layoutY="262.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="340.0" layoutY="262.0" mnemonicParsing="false" text="Button" />
-      <Label layoutX="183.0" layoutY="159.0" text="Label" />
-      <Label layoutX="183.0" layoutY="192.0" text="Label" />
-      <Label layoutX="211.0" layoutY="75.0" text="Label" />
-      <TextField layoutX="218.0" layoutY="155.0" />
-      <TextField layoutX="218.0" layoutY="188.0" />
-   </children>
+    <children>
+        <Button layoutX="183.0" layoutY="285.0" mnemonicParsing="false" text="Go Back" />
+        <Button layoutX="363.0" layoutY="285.0" mnemonicParsing="false" text="Login" />
+        <TextField layoutX="260.0" layoutY="175.0" />
+        <TextField layoutX="260.0" layoutY="219.0" />
+        <Label layoutX="186.0" layoutY="179.0" text="Username" />
+        <Label layoutX="188.0" layoutY="223.0" text="Password" />
+        <Label layoutX="166.0" layoutY="48.0" prefHeight="83.0" prefWidth="267.0" text="Please Login with your username and password" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>
