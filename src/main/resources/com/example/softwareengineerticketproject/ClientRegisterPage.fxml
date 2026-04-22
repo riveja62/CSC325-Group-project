@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softwareengineerticketproject.ClientRegisterPageController">
+   <children>
+      <Label text="Register" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label text="Client" textAlignment="CENTER" />
+      <TextField fx:id="usernameTextfield" alignment="CENTER" promptText="Username" />
+      <TextField fx:id="passwordTextfield" alignment="CENTER" promptText="Password" />
+      <TextField fx:id="firstNameTextfield" alignment="CENTER" promptText="First Name" />
+      <TextField fx:id="lastNameTextfield" alignment="CENTER" promptText="Last name" />
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Cancel" textAlignment="CENTER" />
+            <Button fx:id="registerButton" mnemonicParsing="false" text="Register" textAlignment="CENTER" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

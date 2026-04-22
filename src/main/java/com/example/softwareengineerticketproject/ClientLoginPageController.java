@@ -30,4 +30,9 @@ public class ClientLoginPageController {
     private void goBackButtonClicked() throws IOException{
         TicketManagerApplication.setRoot("UserIdentifierPage");
     }
+
+    @FXML
+    private void registerButtonClicked() throws IOException{
+        TicketManagerApplication.setRoot("ClientRegisterPage");
+    }
 }
