@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softwareengineerticketproject.UserIdentifierPageController">
    <children>
-      <Button layoutX="359.0" layoutY="223.0" mnemonicParsing="false" text="Worker">
+      <Button fx:id="workerButton" layoutX="359.0" layoutY="223.0" mnemonicParsing="false" onAction="#workerButtonClicked" text="Worker">
          <font>
             <Font size="20.0" />
          </font>
@@ -16,7 +16,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="150.0" layoutY="223.0" mnemonicParsing="false" text="Client">
+      <Button fx:id="clientButton" layoutX="150.0" layoutY="223.0" mnemonicParsing="false" onAction="#clientButtonClicked" text="Client">
          <font>
             <Font size="20.0" />
          </font>

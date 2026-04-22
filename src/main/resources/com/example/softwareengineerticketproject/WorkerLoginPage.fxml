@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softwareengineerticketproject.WorkerLoginPageController">
     <children>
         <Button layoutX="183.0" layoutY="285.0" mnemonicParsing="false" text="Go Back" />
         <Button layoutX="363.0" layoutY="285.0" mnemonicParsing="false" text="Login" />
