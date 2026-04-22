@@ -18,7 +18,7 @@
       <TextField fx:id="passwordTextfield" alignment="CENTER" promptText="Password" />
       <TextField fx:id="firstNameTextfield" alignment="CENTER" promptText="First Name" />
       <TextField fx:id="lastNameTextfield" alignment="CENTER" promptText="Last name" />
-      <TextField fx:id="phoneNumberTextfield" alignment="CENTER" promptText="Phone Number (numbers only)" />
+      <TextField fx:id="emailTextfield" alignment="CENTER" promptText="Email" />
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Cancel" textAlignment="CENTER" />

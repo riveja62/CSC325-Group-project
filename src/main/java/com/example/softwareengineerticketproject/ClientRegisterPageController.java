@@ -22,7 +22,7 @@ public class ClientRegisterPageController {
     private TextField lastNameTextfield;
 
     @FXML
-    private TextField phoneNumberTextfield;
+    private TextField emailTextfield;
 
     // buttons
     @FXML
