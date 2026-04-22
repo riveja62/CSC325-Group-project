@@ -13,6 +13,8 @@ target/
 *.iml
 *.ipr
 key.json
+src/main/resources/**/key.json
+
 
 ### Eclipse ###
 .apt_generated
