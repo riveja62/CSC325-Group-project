@@ -21,6 +21,9 @@ public class ClientRegisterPageController {
     @FXML
     private TextField lastNameTextfield;
 
+    @FXML
+    private TextField phoneNumberTextfield;
+
     // buttons
     @FXML
     private Button cancelButton;
