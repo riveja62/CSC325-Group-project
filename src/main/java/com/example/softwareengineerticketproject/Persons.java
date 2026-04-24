@@ -66,4 +66,6 @@ public abstract class Persons {
     public void setUsername(String Username){
         this.Password = Username;
     }
+
+    public abstract void displayInfo();
 }
