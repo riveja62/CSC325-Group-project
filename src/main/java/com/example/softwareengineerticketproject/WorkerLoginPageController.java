@@ -15,6 +15,9 @@ public class WorkerLoginPageController {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private Button registerButton;
+
     //text fields
     @FXML
     private TextField usernameTextfield;
@@ -26,6 +29,11 @@ public class WorkerLoginPageController {
     @FXML
     private void goBackButtonClicked() throws IOException {
         TicketManagerApplication.setRoot("UserIdentifierPage");
+    }
+
+    @FXML
+    private void registerButtonClicked() throws IOException{
+        TicketManagerApplication.setRoot("WorkerRegisterPage");
     }
 
 }

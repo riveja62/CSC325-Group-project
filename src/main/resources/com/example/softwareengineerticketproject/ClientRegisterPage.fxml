@@ -15,7 +15,7 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <TextField fx:id="usernameTextfield" alignment="CENTER" promptText="Username" />
-      <TextField fx:id="passwordTextfield" alignment="CENTER" promptText="Password" />
+       <PasswordField fx:id="passwordTextfield" alignment="CENTER" promptText="Password" />
       <TextField fx:id="firstNameTextfield" alignment="CENTER" promptText="First Name" />
       <TextField fx:id="lastNameTextfield" alignment="CENTER" promptText="Last name" />
       <TextField fx:id="emailTextfield" alignment="CENTER" promptText="Email" />

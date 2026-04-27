@@ -7,14 +7,18 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class ClientRegisterPageController {
+public class WorkerRegisterPageController {
+
+    // PIN to be able to register a worker
+    final private int pin = 6769;
+
 
     // text fields
     @FXML
     private TextField usernameTextfield;
 
     @FXML
-    private PasswordField passwordTextfield;
+    private PasswordField passwordPasswordfield;
 
     @FXML
     private TextField firstNameTextfield;
@@ -25,6 +29,9 @@ public class ClientRegisterPageController {
     @FXML
     private TextField emailTextfield;
 
+    @FXML
+    private PasswordField pinPasswordfield;
+
     // buttons
     @FXML
     private Button cancelButton;
@@ -33,7 +40,7 @@ public class ClientRegisterPageController {
     private Button registerButton;
 
     @FXML
-    private void cancelButtonClicked() throws IOException{
+    private void cancelButtonClicked() throws IOException {
         TicketManagerApplication.setRoot("ClientLoginPage");
     }
 
