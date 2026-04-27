@@ -6,10 +6,10 @@ public class Clients extends Persons{
     }
 
     public void displayInfo(){
-        System.out.println("Clients ID: " + ID());
-        System.out.println("Clients Name: " + FirstName() + " " + LastName());
-        System.out.println("Clients Username: " + Username());
-        System.out.println("Clients Password: " + Password());
-        System.out.println("Clients Email: " + Email());
+        System.out.println("Clients ID: " + getID());
+        System.out.println("Clients Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Clients Username: " + getUsername());
+        System.out.println("Clients Password: " + getPassword());
+        System.out.println("Clients Email: " + getEmail());
     }
 }

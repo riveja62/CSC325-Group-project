@@ -17,54 +17,56 @@ public abstract class Persons {
         this.Username = Username;
     }
 
+    // this is all the setters
 
-    public int ID(){
-        return ID;
-    }
-
-    public String FirstName(){
-        return FirstName;
-    }
-
-    public String LastName(){
-        return LastName;
-    }
-
-    public String Password(){
-        return Password;
-    }
-
-    public String Email(){
-        return Email;
-    }
-
-    public String Username(){
-        return Username;
-    }
-
-
-    public void setID(int ID){
+    public void setID(int ID) {
         this.ID = ID;
     }
 
-    public void setFirstName(String FirstName){
-        this.FirstName = FirstName;
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
     }
 
-    public void setLastName(String LastName){
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        LastName = lastName;
     }
 
-    public void setPassword(String Password){
-        this.Password = Password;
+    public void setPassword(String password) {
+        Password = password;
     }
 
-    public void setEmail(String Email){
-        this.Password = Email;
+    public void setUsername(String username) {
+        Username = username;
     }
 
-    public void setUsername(String Username){
-        this.Password = Username;
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    // this is all the getters
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public String getUsername() {
+        return Username;
     }
 
     public abstract void displayInfo();
