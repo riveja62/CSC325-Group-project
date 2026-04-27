@@ -9,7 +9,7 @@
         <Button fx:id="goBackButton" layoutX="183.0" layoutY="285.0" mnemonicParsing="false" onAction="#goBackButtonClicked" text="Go Back" />
         <Button fx:id="loginButton" layoutX="363.0" layoutY="285.0" mnemonicParsing="false" text="Login" />
         <TextField fx:id="usernameTextfield" layoutX="260.0" layoutY="175.0" />
-        <TextField fx:id="passwordTextfield" layoutX="260.0" layoutY="219.0" />
+        <PasswordField fx:id="passwordTextfield" layoutX="260.0" layoutY="219.0" />
         <Label layoutX="186.0" layoutY="179.0" text="Username" />
         <Label layoutX="188.0" layoutY="223.0" text="Password" />
         <Label layoutX="166.0" layoutY="48.0" prefHeight="83.0" prefWidth="267.0" text="Please Login with your username and password" textAlignment="CENTER" wrapText="true">
