@@ -7,6 +7,14 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/*
+This class is the controller for the client login page, it provides the ability for it to function. It contains these
+methods:
+    * goBackButtonClicked - allows go back button to function
+    * registerButtonClicked - allows the register button to function
+
+*/
+
 public class ClientLoginPageController {
 
     // buttons
@@ -26,12 +34,13 @@ public class ClientLoginPageController {
     @FXML
     private PasswordField passwordTextfield;
 
-    // this method is activated when the go back button is clicked and redirects to the who are you page.
+    // this method is activated when the go back button is clicked and redirects to the "who are you" page.
     @FXML
     private void goBackButtonClicked() throws IOException{
         TicketManagerApplication.setRoot("UserIdentifierPage");
     }
 
+    // this method is activated when the register button is clicked and redirects to the ClientRegisterPage
     @FXML
     private void registerButtonClicked() throws IOException{
         TicketManagerApplication.setRoot("ClientRegisterPage");

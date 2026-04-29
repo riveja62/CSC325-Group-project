@@ -7,6 +7,13 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/*
+This class is the controller for the client register page, it provides the ability for it to function. It contains these
+methods:
+    * cancelButtonClicked - allows cancel button to function
+
+*/
+
 public class ClientRegisterPageController {
 
     // text fields
@@ -32,6 +39,7 @@ public class ClientRegisterPageController {
     @FXML
     private Button registerButton;
 
+    // this method is activated when the cancel button is clicked and redirects to the ClientLoginPage.
     @FXML
     private void cancelButtonClicked() throws IOException{
         TicketManagerApplication.setRoot("ClientLoginPage");

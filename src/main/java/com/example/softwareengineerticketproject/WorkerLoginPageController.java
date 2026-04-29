@@ -7,6 +7,14 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/*
+This class is the controller for the worker login page, it provides the ability for it to function. It contains these
+methods:
+    * goBackButtonClicked - allows go back button to function
+    * registerButtonClicked - allows register button to function
+
+*/
+
 public class WorkerLoginPageController {
 
     // buttons

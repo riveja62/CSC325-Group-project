@@ -1,5 +1,14 @@
 package com.example.softwareengineerticketproject;
 
+/*
+This class is the parent class for the Worker and Client classes. It sets up everything for them and contains these
+methods:
+    * getters and setters - allows the ability to manipulate and get an object's information, this is useful for
+                            firebase integration
+    * abstract display info - this forces the children classes to make their version of display info
+
+*/
+
 public abstract class Persons {
     protected int ID;
     protected String FirstName;
@@ -8,6 +17,7 @@ public abstract class Persons {
     String Email;
     String Username;
 
+    // this is the person constructor
     public Persons(int ID, String FirstName, String LastName, String Password, String Email, String Username){
         this.ID = ID;
         this.FirstName = FirstName;
@@ -69,5 +79,6 @@ public abstract class Persons {
         return Username;
     }
 
+    // this forces the children classes to make their version of display info
     public abstract void displayInfo();
 }

@@ -5,6 +5,14 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
+/*
+This class is the controller for the user identifier page, it provides the ability for it to function. It contains these
+methods:
+    * clientButtonClicked - allows client button to function
+    * workerButtonClicked - allows worker button to function
+
+*/
+
 public class UserIdentifierPageController {
 
     // buttons

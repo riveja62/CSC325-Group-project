@@ -7,9 +7,16 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/*
+This class is the controller for the worker register page, it provides the ability for it to function. It contains these
+methods:
+    * cancelButtonClicked - allows cancel button to function
+
+*/
+
 public class WorkerRegisterPageController {
 
-    // PIN to be able to register a worker
+    // hardcoded PIN to be able to register a worker
     final private int pin = 6769;
 
 

@@ -9,6 +9,11 @@ import com.google.firebase.cloud.FirestoreClient;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/*
+this class utilizes the fire store's provided code to access and utilize the fire store database and authentication
+features
+*/
+
 public class FirestoreContext {
 
     public Firestore firebase() {
