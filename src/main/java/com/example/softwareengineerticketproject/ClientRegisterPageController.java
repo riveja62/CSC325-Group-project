@@ -71,12 +71,24 @@ public class ClientRegisterPageController {
     }
 
     /*
-    this method performs 3 actions:
+    this method performs 4 actions:
+        - makes sure no field is empty
         - checks if username is taken
         - adds user to authentication
         - adds user and their info to firestore
      */
     public boolean registerUser() {
+
+        if (usernameTextfield.getText().isEmpty() ||
+                passwordTextfield.getText().isEmpty() ||
+                firstNameTextfield.getText().isEmpty() ||
+                lastNameTextfield.getText().isEmpty() ||
+                emailTextfield.getText().isEmpty()) {
+
+            errorLabel.setText("All fields must be filled out");
+            return false;
+        }
+
 
         // this makes sure a username isn't already taken
         ApiFuture<QuerySnapshot> future = TicketManagerApplication.fstore
