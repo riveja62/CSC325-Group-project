@@ -11,20 +11,20 @@ methods:
 
 public abstract class Persons {
     protected int ID;
-    protected String FirstName;
-    protected String LastName;
-    protected String Password;
-    String Email;
-    String Username;
+    protected String firstName;
+    protected String lastName;
+    protected String password;
+    protected String email;
+    protected String username;
 
     // this is the person constructor
     public Persons(int ID, String FirstName, String LastName, String Password, String Email, String Username){
         this.ID = ID;
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Password = Password;
-        this.Email = Email;
-        this.Username = Username;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.password = Password;
+        this.email = Email;
+        this.username = Username;
     }
 
     // this is all the setters
@@ -34,23 +34,23 @@ public abstract class Persons {
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     // this is all the getters
@@ -60,23 +60,23 @@ public abstract class Persons {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     // this forces the children classes to make their version of display info

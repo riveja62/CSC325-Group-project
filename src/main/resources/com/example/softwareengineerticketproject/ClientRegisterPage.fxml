@@ -19,11 +19,16 @@
       <TextField fx:id="firstNameTextfield" alignment="CENTER" promptText="First Name" />
       <TextField fx:id="lastNameTextfield" alignment="CENTER" promptText="Last name" />
       <TextField fx:id="emailTextfield" alignment="CENTER" promptText="Email" />
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+      <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="600.0" spacing="50.0">
          <children>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Cancel" textAlignment="CENTER" />
-            <Button fx:id="registerButton" mnemonicParsing="false" text="Register" textAlignment="CENTER" />
+            <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonClicked" text="Register" textAlignment="CENTER" />
          </children>
       </HBox>
+      <Label fx:id="errorLabel" textAlignment="CENTER" textFill="RED" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </VBox>

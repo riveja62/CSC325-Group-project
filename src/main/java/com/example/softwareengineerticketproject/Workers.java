@@ -18,8 +18,8 @@ public class Workers extends Persons{
     public void displayInfo(){
         System.out.println("Employee ID: " + getID());
         System.out.println("Employee Name: " + getFirstName() + " " + getLastName());
-        System.out.println("Employee Username: " + getUsername());
-        System.out.println("Employee Password: " + getPassword());
-        System.out.println("Employee Email: " + getEmail());
+        System.out.println("Employee username: " + getUsername());
+        System.out.println("Employee password: " + getPassword());
+        System.out.println("Employee email: " + getEmail());
     }
 }
