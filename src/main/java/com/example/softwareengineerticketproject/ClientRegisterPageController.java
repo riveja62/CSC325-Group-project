@@ -61,7 +61,7 @@ public class ClientRegisterPageController {
 
     /*
     this method is activated when the register button is clicked. it tries to register a user and if successful it
-    redirects to the login page
+    redirects to the client login page
      */
     @FXML
     private void registerButtonClicked() throws IOException{

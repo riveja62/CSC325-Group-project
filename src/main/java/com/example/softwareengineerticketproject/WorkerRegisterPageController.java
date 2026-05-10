@@ -25,7 +25,7 @@ methods:
 public class WorkerRegisterPageController {
 
 
-    // this initialize method makes it so the pin field ONLY accepts numbers
+    // this method makes it so the pin field ONLY accepts numbers
     public void initialize() {
         pinPasswordfield.setTextFormatter(new TextFormatter<>(change -> {
             if (change.getControlNewText().matches("\\d*")) {
@@ -69,6 +69,7 @@ public class WorkerRegisterPageController {
     @FXML
     private Button registerButton;
 
+    // this method is activated when the cancel button is clicked and redirects to the worker login page.
     @FXML
     private void cancelButtonClicked() throws IOException {
         TicketManagerApplication.setRoot("WorkerLoginPage");
@@ -76,7 +77,7 @@ public class WorkerRegisterPageController {
 
     /*
     this method is activated when the register button is clicked. it tries to register a user and if successful it
-    redirects to the login page
+    redirects to the worker login page
  */
     @FXML
     private void registerButtonClicked() throws IOException{
@@ -87,12 +88,12 @@ public class WorkerRegisterPageController {
 
 
     /*
-this method performs 5 actions:
-    - makes sure no field is empty
-    - checks if correct pin was inputted
-    - checks if username is taken
-    - adds user to authentication
-    - adds user and their info to firestore
+    this method performs 5 actions:
+        - makes sure no field is empty
+        - checks if correct pin was inputted
+        - checks if username is taken
+        - adds user to authentication
+        - adds user and their info to firestore
  */
     public boolean registerUser() {
 

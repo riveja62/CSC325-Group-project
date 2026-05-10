@@ -16,6 +16,8 @@ This class is the controller for the worker login page, it provides the ability 
 methods:
     * goBackButtonClicked - allows go back button to function
     * registerButtonClicked - allows register button to function
+    * loginButtonClicked - allows login button to work
+    * login - checks for user information and logs them in
 
 */
 
@@ -48,11 +50,16 @@ public class WorkerLoginPageController {
         TicketManagerApplication.setRoot("UserIdentifierPage");
     }
 
+    // this method is activated when the register button is clicked and redirects to the worker register page.
     @FXML
     private void registerButtonClicked() throws IOException{
         TicketManagerApplication.setRoot("WorkerRegisterPage");
     }
 
+    /*
+    this method is activated when the login button is clicked and tries to login and if successful it redirects to
+    the worker home page
+     */
     @FXML
     private void loginButtonClicked() throws IOException{
         if(login()){
@@ -60,8 +67,17 @@ public class WorkerLoginPageController {
         }
     }
 
+    /*
+    this method performs 3 actions:
+        - checks all fields are filled out
+        - checks for username and if it exists
+        - checks if passwords match
+     */
+
     private boolean login() throws IOException {
 
+
+        // ensures all fields are filled out
         if (usernameTextfield.getText().isEmpty() ||
                 passwordTextfield.getText().isEmpty()) {
 
@@ -91,6 +107,7 @@ public class WorkerLoginPageController {
 
             String storedPassword = doc.getString("password");
 
+            // checks password
             if (storedPassword.equals(password)) {
                 System.out.println("Login successful!");
             } else {
