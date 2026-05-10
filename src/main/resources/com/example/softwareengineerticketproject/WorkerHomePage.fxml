@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softwareengineerticketproject.WorkerHomePageController">
+    <children>
+        <TabPane layoutY="88.0" prefHeight="362.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Create">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <HBox layoutY="8.0" prefHeight="325.0" prefWidth="600.0">
+                                    <children>
+                                        <VBox fx:id="VBox1" prefHeight="325.0" prefWidth="166.0">
+                                            <children>
+                                                <Label prefHeight="59.0" prefWidth="166.0" text="Label" />
+                                            </children>
+                                        </VBox>
+                                        <VBox prefHeight="325.0" prefWidth="434.0">
+                                            <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                                <Label text="Label" />
+                                                <TextArea prefHeight="200.0" prefWidth="200.0" />
+                                                <Button mnemonicParsing="false" text="Button" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Past">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="FAQ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="Updates">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label fx:id="UserName" layoutX="14.0" layoutY="14.0" text="worker" />
+    </children>
 </AnchorPane>
