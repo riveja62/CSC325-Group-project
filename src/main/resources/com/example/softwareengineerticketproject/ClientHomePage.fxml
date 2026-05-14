@@ -21,11 +21,20 @@
                               </VBox>
                               <VBox prefHeight="325.0" prefWidth="434.0">
                                  <children>
-                                    <Label text="Label" />
-                                    <TextField />
-                                    <Label text="Label" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" />
-                                    <Button mnemonicParsing="false" text="Button" />
+                                    <Label text="Subject">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
+                                    <TextField fx:id="subjectTextField" />
+                                    <HBox alignment="CENTER" prefHeight="38.0" prefWidth="434.0" spacing="30.0">
+                                       <children>
+                                          <Label text="Description" />
+                                          <ChoiceBox fx:id="deviceChoiceBox" prefWidth="150.0" />
+                                          <ChoiceBox fx:id="issueChoiceBox" prefWidth="150.0" />
+                                       </children>
+                                    </HBox>
+                                    <TextArea fx:id="descriptionTextArea" prefHeight="178.0" prefWidth="434.0" />
+                                    <Button fx:id="submitTicketButton" mnemonicParsing="false" text="Submit Ticket" />
                                  </children>
                               </VBox>
                            </children>
