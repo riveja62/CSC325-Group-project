@@ -10,7 +10,7 @@ class. It contains these methods:
 public class Clients extends Persons{
 
     // this is the constructor
-    public Clients(int ID, String FirstName, String LastName, String Username, String Password, String Email){
+    public Clients(String ID, String FirstName, String LastName, String Username, String Password, String Email){
         super(ID, FirstName, LastName, Username, Password, Email);
     }
 

@@ -10,7 +10,7 @@ methods:
 */
 
 public abstract class Persons {
-    protected int ID;
+    protected String ID;
     protected String firstName;
     protected String lastName;
     protected String password;
@@ -18,7 +18,7 @@ public abstract class Persons {
     protected String username;
 
     // this is the person constructor
-    public Persons(int ID, String FirstName, String LastName, String Password, String Email, String Username){
+    public Persons(String ID, String FirstName, String LastName, String Password, String Email, String Username){
         this.ID = ID;
         this.firstName = FirstName;
         this.lastName = LastName;
@@ -29,7 +29,7 @@ public abstract class Persons {
 
     // this is all the setters
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -55,7 +55,7 @@ public abstract class Persons {
 
     // this is all the getters
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 

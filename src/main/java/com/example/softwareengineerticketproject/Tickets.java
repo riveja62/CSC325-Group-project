@@ -10,15 +10,15 @@ methods:
 
 
 public class Tickets{
-    int ID;
+    String ID;
     String DeviceInfo;
     String IssueType;
     Boolean Completion;
     String DescriptionIssue;
-    int UserID;
+    String UserID;
 
     // this is the constructor
-    public Tickets(int ID, String DeviceInfo, String IssueType,Boolean Completion, String DescriptionIssue, int UserID){
+    public Tickets(String ID, String DeviceInfo, String IssueType,Boolean Completion, String DescriptionIssue, String UserID){
         this.ID = ID;
         this.DeviceInfo = DeviceInfo;
         this.IssueType = IssueType;
@@ -29,7 +29,7 @@ public class Tickets{
 
     // this is the getters
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
@@ -49,13 +49,13 @@ public class Tickets{
         return DescriptionIssue;
     }
 
-    public int getUserID() {
+    public String getUserID() {
         return UserID;
     }
 
     // this is the setters
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -75,7 +75,7 @@ public class Tickets{
         DescriptionIssue = descriptionIssue;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         UserID = userID;
     }
 }
