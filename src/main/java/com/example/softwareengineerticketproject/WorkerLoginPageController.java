@@ -57,12 +57,13 @@ public class WorkerLoginPageController {
     }
 
     /*
-    this method is activated when the login button is clicked and tries to login and if successful it redirects to
-    the worker home page
+    this method is activated when the login button is clicked and tries to login and if successful it assigns the
+    username as the session and redirects to the worker home page
      */
     @FXML
     private void loginButtonClicked() throws IOException{
         if(login()){
+            WorkerHomePageController.setUsername(usernameTextfield.getText());
             TicketManagerApplication.setRoot("WorkerHomePage");
         }
     }
