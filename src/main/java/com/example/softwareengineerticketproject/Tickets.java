@@ -11,20 +11,22 @@ methods:
 
 public class Tickets{
     String ID;
-    String DeviceInfo;
-    String IssueType;
-    Boolean Completion;
-    String DescriptionIssue;
-    String UserID;
+    String subject;
+    String deviceInfo;
+    String issueType;
+    Boolean completion;
+    String descriptionIssue;
+    String userID;
 
     // this is the constructor
-    public Tickets(String ID, String DeviceInfo, String IssueType,Boolean Completion, String DescriptionIssue, String UserID){
+    public Tickets(String ID, String Subject,String DeviceInfo, String IssueType,Boolean Completion, String DescriptionIssue, String UserID){
         this.ID = ID;
-        this.DeviceInfo = DeviceInfo;
-        this.IssueType = IssueType;
-        this.Completion = Completion;
-        this.DescriptionIssue = DescriptionIssue;
-        this.UserID = UserID;
+        this.subject = Subject;
+        this.deviceInfo = DeviceInfo;
+        this.issueType = IssueType;
+        this.completion = Completion;
+        this.descriptionIssue = DescriptionIssue;
+        this.userID = UserID;
     }
 
     // this is the getters
@@ -34,23 +36,23 @@ public class Tickets{
     }
 
     public String getDeviceInfo() {
-        return DeviceInfo;
+        return deviceInfo;
     }
 
     public String getIssueType() {
-        return IssueType;
+        return issueType;
     }
 
     public Boolean getCompletion() {
-        return Completion;
+        return completion;
     }
 
     public String getDescriptionIssue() {
-        return DescriptionIssue;
+        return descriptionIssue;
     }
 
     public String getUserID() {
-        return UserID;
+        return userID;
     }
 
     // this is the setters
@@ -60,22 +62,22 @@ public class Tickets{
     }
 
     public void setDeviceInfo(String deviceInfo) {
-        DeviceInfo = deviceInfo;
+        this.deviceInfo = deviceInfo;
     }
 
     public void setIssueType(String issueType) {
-        IssueType = issueType;
+        this.issueType = issueType;
     }
 
     public void setCompletion(Boolean completion) {
-        Completion = completion;
+        this.completion = completion;
     }
 
     public void setDescriptionIssue(String descriptionIssue) {
-        DescriptionIssue = descriptionIssue;
+        this.descriptionIssue = descriptionIssue;
     }
 
     public void setUserID(String userID) {
-        UserID = userID;
+        this.userID = userID;
     }
 }

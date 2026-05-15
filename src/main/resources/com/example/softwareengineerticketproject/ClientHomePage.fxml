@@ -33,8 +33,13 @@
                                           <ChoiceBox fx:id="issueChoiceBox" prefWidth="150.0" />
                                        </children>
                                     </HBox>
-                                    <TextArea fx:id="descriptionTextArea" prefHeight="178.0" prefWidth="434.0" />
-                                    <Button fx:id="submitTicketButton" mnemonicParsing="false" text="Submit Ticket" />
+                                    <TextArea fx:id="descriptionTextArea" prefHeight="178.0" prefWidth="434.0" wrapText="true" />
+                                    <Button fx:id="submitTicketButton" mnemonicParsing="false" onAction="#submitTicketButtonClicked" text="Submit Ticket" />
+                                    <Label fx:id="errorLabel" textAlignment="CENTER" textFill="RED" underline="true">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
