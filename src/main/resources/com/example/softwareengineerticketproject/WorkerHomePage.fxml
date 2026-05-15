@@ -8,7 +8,7 @@
     <children>
         <TabPane layoutY="88.0" prefHeight="362.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Create">
+                <Tab text="Tickets">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -19,28 +19,23 @@
                                                 <Label prefHeight="59.0" prefWidth="166.0" text="Label" />
                                             </children>
                                         </VBox>
-                                        <VBox prefHeight="325.0" prefWidth="434.0">
-                                            <children>
-                                                <Label text="Label" />
-                                                <TextField />
-                                                <Label text="Label" />
-                                                <TextArea prefHeight="200.0" prefWidth="200.0" />
-                                                <Button mnemonicParsing="false" text="Button" />
-                                            </children>
-                                        </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TableView prefHeight="200.0" prefWidth="200.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="ID" />
+                                        <TableColumn prefWidth="75.0" text="Device Info" />
+                                          <TableColumn prefWidth="75.0" text="Issue Type" />
+                                          <TableColumn prefWidth="75.0" text="Completion" />
+                                          <TableColumn prefWidth="75.0" text="Desc Issue" />
+                                          <TableColumn prefWidth="75.0" text="User ID" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
                                     </children>
                                 </HBox>
                             </children></AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Past">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="FAQ">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
                 <Tab text="Updates">
