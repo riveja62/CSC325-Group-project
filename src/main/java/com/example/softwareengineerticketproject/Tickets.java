@@ -35,6 +35,10 @@ public class Tickets{
         return ID;
     }
 
+    public String getSubject() {
+        return subject;
+    }
+
     public String getDeviceInfo() {
         return deviceInfo;
     }
@@ -59,6 +63,10 @@ public class Tickets{
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public void setDeviceInfo(String deviceInfo) {

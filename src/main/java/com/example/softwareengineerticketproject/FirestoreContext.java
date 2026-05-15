@@ -8,6 +8,7 @@ import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /*
 this class utilizes the fire store's provided code to access and utilize the fire store database and authentication
@@ -32,6 +33,30 @@ public class FirestoreContext {
             ex.printStackTrace();
             System.exit(1);
         }
+        return FirestoreClient.getFirestore();
+    }
+
+    public static Firestore getDB() {
+
+        try {
+
+            if (FirebaseApp.getApps().isEmpty()) {
+
+                InputStream serviceAccount =
+                        FirestoreContext.class.getResourceAsStream(
+                                "/com/example/softwareengineerticketproject/key.json");
+
+                FirebaseOptions options = FirebaseOptions.builder()
+                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                        .build();
+
+                FirebaseApp.initializeApp(options);
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         return FirestoreClient.getFirestore();
     }
 
