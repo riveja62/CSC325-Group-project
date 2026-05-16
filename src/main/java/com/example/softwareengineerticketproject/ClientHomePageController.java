@@ -10,6 +10,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+This class is the controller for the client home page, it provides the ability for it to function. It contains these
+methods:
+    * Initialize - sets up user session and page elements
+    * setUsername - assigns user to create session
+    * logoutButtonClicked - allows logout button to work
+    * submitTicketButtonClicked - allows submit ticket button to work
+    * createTicket - this creates a new ticket in firestore
+
+ */
+
 public class ClientHomePageController {
 
     // assigns the username to label when this page starts and populates the choice boxes

@@ -12,25 +12,48 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <HBox layoutY="8.0" prefHeight="325.0" prefWidth="600.0">
+                                <HBox layoutY="8.0" prefHeight="345.0" prefWidth="600.0">
                                     <children>
                                         <VBox fx:id="VBox1" prefHeight="325.0" prefWidth="166.0">
-                                            <children>
-                                                <Label prefHeight="59.0" prefWidth="166.0" text="Label" />
-                                            </children>
-                                        </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <TableView fx:id="ticketTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                    <Label text="Subject" underline="true" />
+                                    <Label fx:id="subjectLabel" wrapText="true" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                             <children>
+                                                <Label text="User:" />
+                                                <Label text="Device:" />
+                                                <Label text="Issue:" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                             <children>
+                                                <Label fx:id="userLabel" wrapText="true" />
+                                                <Label fx:id="deviceLabel" wrapText="true" />
+                                                <Label fx:id="issueLabel" wrapText="true" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Description" underline="true" />
+                                    <TextArea fx:id="descriptionTextArea" editable="false" prefHeight="162.0" prefWidth="166.0" wrapText="true" />
+                                    <CheckBox fx:id="completionCheckBox" mnemonicParsing="false" onAction="#completionToggled" text="Completed" />
+                                 </children>
+                                        </VBox>
+                              <VBox prefHeight="354.0" prefWidth="434.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TableView fx:id="ticketsTableView" prefHeight="340.0" prefWidth="434.0" VBox.vgrow="ALWAYS">
                                       <columns>
-                                        <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                                           <TableColumn fx:id="subjectColumn" prefWidth="75.0" text="Subject" />
-                                        <TableColumn fx:id="deviceInfoColumn" prefWidth="75.0" text="Device Info" />
-                                          <TableColumn fx:id="issueTypeColumn" prefWidth="75.0" text="Issue Type" />
+                                          <TableColumn fx:id="issueColumn" prefWidth="75.0" text="Issue" />
+                                        <TableColumn fx:id="deviceColumn" prefWidth="75.0" text="Device" />
                                           <TableColumn fx:id="completionColumn" prefWidth="75.0" text="Completion" />
-                                          <TableColumn fx:id="descriptionIssueColumn" prefWidth="75.0" text="Desc Issue" />
-                                          <TableColumn fx:id="userIDColumn" prefWidth="75.0" text="User ID" />
+                                          <TableColumn fx:id="userColumn" prefWidth="75.0" text="User ID" />
                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
                                     </TableView>
                                  </children>
                               </VBox>
@@ -47,7 +70,7 @@
             </tabs>
         </TabPane>
         <Label layoutX="549.0" layoutY="14.0" text="worker" />
-      <Label fx:id="usernameLabel" layoutX="14.0" layoutY="14.0" text="Welcome: " />
+      <Label layoutX="14.0" layoutY="14.0" text="Welcome: " />
       <Label fx:id="usernameLabel" layoutX="70.0" layoutY="14.0">
          <font>
             <Font name="System Bold" size="12.0" />
