@@ -49,7 +49,15 @@ public class ClientHomePageController {
 
         //sets up create tab table
         setupCreateTableColumns();
+
+        // sets up past tab table
+        setupPastTableColumns();
+
+        // loads up tickets
         loadAllClientTickets();
+
+        // activates listener
+        setupRowSelection();
     }
 
     // create tab table elements
@@ -57,6 +65,21 @@ public class ClientHomePageController {
     @FXML private TableColumn<Tickets, String> createSubjectColumn;
     @FXML private TableColumn<Tickets, Boolean> createCompletedColumn;
 
+    // past tab table elements
+    @FXML private TableView<Tickets> pastTable;
+    @FXML private TableColumn<Tickets, String> pastSubjectColumn;
+    @FXML private TableColumn<Tickets, String> pastDeviceColumn;
+    @FXML private TableColumn<Tickets, String> pastIssueColumn;
+    @FXML private TableColumn<Tickets, Boolean> pastCompletedColumn;
+
+    // past tab side panel elements
+    @FXML private Label subjectLabel;
+    @FXML private Label completedLabel;
+    @FXML private Label deviceLabel;
+    @FXML private Label issueLabel;
+    @FXML private TextArea pastDescriptionTextArea;
+
+    private Tickets selectedTicket;
 
     // choice boxes
     @FXML
@@ -162,6 +185,37 @@ public class ClientHomePageController {
         createCompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completion"));
     }
 
+    // this method sets up each of the columns in the past tab table to be able to display the values
+    private void setupPastTableColumns(){
+        pastSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        pastDeviceColumn.setCellValueFactory(new PropertyValueFactory<>("deviceInfo"));
+        pastIssueColumn.setCellValueFactory(new PropertyValueFactory<>("issueType"));
+        pastCompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completion"));
+    }
+
+    // this is a listener that detects which row is selected on the past table
+    private void setupRowSelection() {
+        pastTable.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldTicket, newTicket) -> {
+                    if (newTicket != null) {
+                        selectedTicket = newTicket;
+                        showTicketDetails(newTicket);
+                    }
+                }
+        );
+    }
+
+    // this shows the details of the selected ticket on the past table view on the left panel
+    private void showTicketDetails(Tickets ticket) {
+        subjectLabel.setText(ticket.getSubject());
+        deviceLabel.setText(ticket.getDeviceInfo());
+        issueLabel.setText(ticket.getIssueType());
+        pastDescriptionTextArea.setText(ticket.getDescriptionIssue());
+        completedLabel.setText(String.valueOf(ticket.getCompletion()));
+    }
+
+
+
     // this method loads all the clients tickets
     private void loadAllClientTickets() {
         try {
@@ -187,6 +241,7 @@ public class ClientHomePageController {
             }
 
             createTable.setItems(ticketList);
+            pastTable.setItems(ticketList);
 
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
