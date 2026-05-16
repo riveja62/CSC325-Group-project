@@ -26,13 +26,16 @@ methods:
     * submitTicketButtonClicked - allows submit ticket button to work
     * createTicket - this creates a new ticket in firestore
     * setupCreateTableColumns - this sets up the create tab table for displaying tickets
+    * setupPastTableColumns - this sets up the past tab table for displaying tickets
+    * setupRowSelection - this is a listener for the past table
+    * showTicketDetails - this displays a tickets info to the past tab side panel
     * loadAllClientTickets - this is a query for the clients tickets
 
  */
 
 public class ClientHomePageController {
 
-    // assigns the username to label when this page starts and populates the choice boxes
+    // assigns the username to label when this page starts, populates the choice boxes and sets up page elements
     public void initialize(){
         // assigns the label
         usernameLabel.setText(sessionUsername);
