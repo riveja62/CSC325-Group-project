@@ -30,6 +30,10 @@ methods:
     * setupRowSelection - this is a listener for the past table
     * showTicketDetails - this displays a tickets info to the past tab side panel
     * loadAllClientTickets - this is a query for the clients tickets
+    * setupUpdatesTableColumns - this sets up the table for displaying updates
+    * setupUpdatesRowSelection - this is a listener for the updates table
+    * showUpdateDetails - this displays an updates info to the side panel
+    * loadAllUpdates - this is a query for updates
 
  */
 
@@ -56,11 +60,18 @@ public class ClientHomePageController {
         // sets up past tab table
         setupPastTableColumns();
 
+        // sets up updates tab table
+        setupUpdatesTableColumns();
+
         // loads up tickets
         loadAllClientTickets();
 
-        // activates listener
-        setupRowSelection();
+        // loads up updates
+        loadAllUpdates();
+
+        // activates listeners
+        setupTicketRowSelection();
+        setupUpdatesRowSelection();
     }
 
     // create tab table elements
@@ -82,7 +93,20 @@ public class ClientHomePageController {
     @FXML private Label issueLabel;
     @FXML private TextArea pastDescriptionTextArea;
 
+    // updates tab table elements
+    @FXML private TableView<Updates> updatesTableView;
+    @FXML private TableColumn<Updates, String> updatesSubjectColumn;
+    @FXML private TableColumn<Updates, String> updatesDeviceColumn;
+    @FXML private TableColumn<Updates, String> updatesIssueColumn;
+
+    // updates tab side panel elements
+    @FXML private Label updatesSubjectLabel;
+    @FXML private Label updatesDeviceLabel;
+    @FXML private Label updatesIssueLabel;
+    @FXML private TextArea updatesDescriptionTextArea;
+
     private Tickets selectedTicket;
+    private Updates selectedUpdate;
 
     // choice boxes
     @FXML
@@ -197,7 +221,7 @@ public class ClientHomePageController {
     }
 
     // this is a listener that detects which row is selected on the past table
-    private void setupRowSelection() {
+    private void setupTicketRowSelection() {
         pastTable.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldTicket, newTicket) -> {
                     if (newTicket != null) {
@@ -216,7 +240,6 @@ public class ClientHomePageController {
         pastDescriptionTextArea.setText(ticket.getDescriptionIssue());
         completedLabel.setText(String.valueOf(ticket.getCompletion()));
     }
-
 
 
     // this method loads all the clients tickets
@@ -250,6 +273,61 @@ public class ClientHomePageController {
             e.printStackTrace();
         }
     }
+
+    // this method sets up each of the columns in the updates table to be able to display the values
+    private void setupUpdatesTableColumns(){
+        updatesSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        updatesDeviceColumn.setCellValueFactory(new PropertyValueFactory<>("deviceInfo"));
+        updatesIssueColumn.setCellValueFactory(new PropertyValueFactory<>("issueType"));
+    }
+
+    // this is a listener that detects which row is selected on the updates table
+    private void setupUpdatesRowSelection() {
+        updatesTableView.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldUpdate, newUpdate) -> {
+                    if (newUpdate != null) {
+                        selectedUpdate = newUpdate;
+                        showUpdateDetails(newUpdate);
+                    }
+                }
+        );
+    }
+
+    // this shows the details of the selected update on the table view on the left panel
+    private void showUpdateDetails(Updates updates) {
+        updatesSubjectLabel.setText(updates.getSubject());
+        updatesDeviceLabel.setText(updates.getDeviceInfo());
+        updatesIssueLabel.setText(updates.getIssueType());
+        updatesDescriptionTextArea.setText(updates.getDescription());
+    }
+
+    // this method gets a query of all the updates and then puts them into the table view
+    private void loadAllUpdates() {
+        try {
+            ApiFuture<QuerySnapshot> future =
+                    TicketManagerApplication.fstore.collection("Updates").get();
+
+            List<QueryDocumentSnapshot> docs = future.get().getDocuments();
+            ObservableList<Updates> updatesList = FXCollections.observableArrayList();
+
+            for (QueryDocumentSnapshot doc : docs) {
+                Updates u = new Updates(
+                        doc.getString("ID"),
+                        doc.getString("subject"),
+                        doc.getString("deviceInfo"),
+                        doc.getString("issueType"),
+                        doc.getString("description")
+                );
+                updatesList.add(u);
+            }
+
+            updatesTableView.setItems(updatesList);
+
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

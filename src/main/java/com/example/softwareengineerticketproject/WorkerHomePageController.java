@@ -22,12 +22,18 @@ this class is a controller for the worker home page. it contains the following m
     * initialize - this sets user session and page elements
     * setUsername - this sets the username for the user session
     * logoutButtonClicked - this lets the logout button work
-    * setupTableColumns - this sets up the table for displaying tickets
-    * setupRowSelection - this is a listener for the table
+    * submitUpdateButtonClicked - this lets the submit update button work
+    * setupTicketsTableColumns - this sets up the table for displaying tickets
+    * setupTicketsRowSelection - this is a listener for the tickets table
     * showTicketDetails - this displays a tickets info to the side panel
     * completionToggled - this lets the completion checkbox work
     * updateTicketCompletion - this updates completion for a ticket in firestore
     * loadAllTickets - this is a query for tickets
+    * createUpdate - this creates a new update in firestore
+    * setupUpdatesTableColumns - this sets up the table for displaying updates
+    * setupUpdatesRowSelection - this is a listener for the updates table
+    * showUpdateDetails - this displays an updates info to the side panel
+    * loadAllUpdates - this is a query for updates
 
  */
 
@@ -257,12 +263,12 @@ public class WorkerHomePageController {
 
     }
 
-    // this method sets up each of the columns in the tickets table to be able to display the values
+    // this method sets up each of the columns in the updates table to be able to display the values
     private void setupUpdatesTableColumns(){
         updatesSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
     }
 
-    // this is a listener that detects which row is selected on the tickets table
+    // this is a listener that detects which row is selected on the updates table
     private void setupUpdatesRowSelection() {
         updatesTableView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldUpdate, newUpdate) -> {
