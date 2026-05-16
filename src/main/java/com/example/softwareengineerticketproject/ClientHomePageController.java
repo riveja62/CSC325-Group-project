@@ -107,6 +107,7 @@ public class ClientHomePageController {
 
     private Tickets selectedTicket;
     private Updates selectedUpdate;
+    private final ObservableList<Tickets> ticketList = FXCollections.observableArrayList();
 
     // choice boxes
     @FXML
@@ -154,13 +155,14 @@ public class ClientHomePageController {
 
     // this method allows the create ticket button to work. it creates ticket and wipes info from boxes
     @FXML
-    private void submitTicketButtonClicked() throws IOException{
+    private void submitTicketButtonClicked() throws IOException, ExecutionException, InterruptedException {
         if(createTicket()){
             subjectTextField.setText("");
             descriptionTextArea.setText("");
             deviceChoiceBox.setValue("Device");
             issueChoiceBox.setValue("Issue");
             errorLabel.setText("");
+            loadAllClientTickets();
         }
     }
 
@@ -169,7 +171,7 @@ public class ClientHomePageController {
         - checks all fields are filled out
         - creates a ticket in firestore
      */
-    private boolean createTicket() throws IOException{
+    private boolean createTicket() throws IOException, ExecutionException, InterruptedException {
 
         // checks all fields
         if(subjectTextField.getText().isEmpty() ||
@@ -200,6 +202,7 @@ public class ClientHomePageController {
         userMap.put("userID", sessionUsername);
 
         ApiFuture<WriteResult> result = docRef.set(userMap);
+        result.get();
 
         return true;
 
@@ -245,14 +248,18 @@ public class ClientHomePageController {
     // this method loads all the clients tickets
     private void loadAllClientTickets() {
         try {
+            // Query only this user's tickets
             ApiFuture<QuerySnapshot> future =
                     TicketManagerApplication.fstore.collection("Tickets")
                             .whereEqualTo("userID", sessionUsername)
                             .get();
 
             List<QueryDocumentSnapshot> docs = future.get().getDocuments();
-            ObservableList<Tickets> ticketList = FXCollections.observableArrayList();
 
+            // Clear the possible existing list
+            ticketList.clear();
+
+            // Rebuild the list with fresh data
             for (QueryDocumentSnapshot doc : docs) {
                 Tickets t = new Tickets(
                         doc.getString("ID"),
@@ -266,14 +273,18 @@ public class ClientHomePageController {
                 ticketList.add(t);
             }
 
+            // Set the list to the tables
             createTable.setItems(ticketList);
             pastTable.setItems(ticketList);
+
+            // refresh tables
+            createTable.refresh();
+            pastTable.refresh();
 
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
-
     // this method sets up each of the columns in the updates table to be able to display the values
     private void setupUpdatesTableColumns(){
         updatesSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
