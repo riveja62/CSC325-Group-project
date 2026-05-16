@@ -53,11 +53,18 @@ public class WorkerHomePageController {
         // sets up tickets tab table
         setupTicketsTableColumns();
 
+        // sets up updates tab table
+        setupUpdatesTableColumns();
+
         // loads all the tickets in the database
         loadAllTickets();
 
-        // activates listener
-        setupRowSelection();
+        // loads all the updates into the database
+        loadAllUpdates();
+
+        // activates listeners
+        setupTicketsRowSelection();
+        setupUpdatesRowSelection();
     }
 
     // labels
@@ -85,6 +92,8 @@ public class WorkerHomePageController {
     // updates side panel table elements
     @FXML private TableView<Updates> updatesTableView;
     @FXML private TableColumn<Updates, String> updatesSubjectColumn;
+    @FXML private Label updatesSubjectLabel;
+    @FXML private TextArea updatesSideDescriptionTextArea;
 
     // updates creation elements
     @FXML private TextField updatesSubjectTextField;
@@ -96,6 +105,7 @@ public class WorkerHomePageController {
 
 
     private Tickets selectedTicket;
+    private Updates selectedUpdate;
 
     // session user variable
     private static String sessionUsername;
@@ -129,7 +139,7 @@ public class WorkerHomePageController {
     }
 
 
-    // this method sets up each of the columns in the table to be able to display the values
+    // this method sets up each of the columns in the tickets table to be able to display the values
     private void setupTicketsTableColumns() {
         subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
         issueColumn.setCellValueFactory(new PropertyValueFactory<>("issueType"));
@@ -138,8 +148,8 @@ public class WorkerHomePageController {
         userColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
     }
 
-    // this is a listener that detects which row is selected on the table
-    private void setupRowSelection() {
+    // this is a listener that detects which row is selected on the tickets table
+    private void setupTicketsRowSelection() {
         ticketsTableView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldTicket, newTicket) -> {
                     if (newTicket != null) {
@@ -246,4 +256,56 @@ public class WorkerHomePageController {
         return true;
 
     }
+
+    // this method sets up each of the columns in the tickets table to be able to display the values
+    private void setupUpdatesTableColumns(){
+        updatesSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+    }
+
+    // this is a listener that detects which row is selected on the tickets table
+    private void setupUpdatesRowSelection() {
+        updatesTableView.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldUpdate, newUpdate) -> {
+                    if (newUpdate != null) {
+                        selectedUpdate = newUpdate;
+                        showUpdateDetails(newUpdate);
+                    }
+                }
+        );
+    }
+
+    // this shows the details of the selected update on the table view on the left panel
+    private void showUpdateDetails(Updates updates) {
+        updatesSubjectLabel.setText(updates.getSubject());
+        updatesSideDescriptionTextArea.setText(updates.getDescription());
+    }
+
+    // this method gets a query of all the updates and then puts them into the table view
+    private void loadAllUpdates() {
+        try {
+            ApiFuture<QuerySnapshot> future =
+                    TicketManagerApplication.fstore.collection("Updates").get();
+
+            List<QueryDocumentSnapshot> docs = future.get().getDocuments();
+            ObservableList<Updates> updatesList = FXCollections.observableArrayList();
+
+            for (QueryDocumentSnapshot doc : docs) {
+                Updates u = new Updates(
+                        doc.getString("ID"),
+                        doc.getString("subject"),
+                        doc.getString("deviceInfo"),
+                        doc.getString("issueType"),
+                        doc.getString("description")
+                );
+                updatesList.add(u);
+            }
+
+            updatesTableView.setItems(updatesList);
+
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

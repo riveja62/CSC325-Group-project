@@ -71,7 +71,7 @@
                               <VBox prefHeight="354.0" prefWidth="153.0">
                                  <children>
                                     <Label text="Past Updates" underline="true" />
-                                    <TableView fx:id="updatesTableView" prefHeight="351.0" prefWidth="153.0">
+                                    <TableView fx:id="updatesTableView" prefHeight="143.0" prefWidth="153.0">
                                       <columns>
                                         <TableColumn fx:id="updatesSubjectColumn" prefWidth="75.0" text="Subject" />
                                       </columns>
@@ -79,6 +79,10 @@
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
                                     </TableView>
+                                    <Label text="Subject" underline="true" />
+                                    <Label fx:id="updatesSubjectLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" wrapText="true" />
+                                    <Label text="Description" underline="true" />
+                                    <TextArea fx:id="updatesSideDescriptionTextArea" editable="false" prefHeight="137.0" prefWidth="153.0" wrapText="true" />
                                  </children></VBox>
                               <VBox prefHeight="354.0" prefWidth="447.0">
                                  <children>
