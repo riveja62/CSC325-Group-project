@@ -1,8 +1,10 @@
 package com.example.softwareengineerticketproject;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.WriteResult;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,7 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /*
@@ -32,9 +36,27 @@ public class WorkerHomePageController {
     // this method sets user session as well as populating the table
     @FXML
     public void initialize() {
+
+        // assigns the label
         usernameLabel.setText(sessionUsername);
-        setupTableColumns();
+
+        // populates device choice box
+        deviceChoiceBox.getItems().addAll("Phone", "Tablet", "Computer", "Other");
+
+        // populates issue choice box
+        issueChoiceBox.getItems().addAll("Lags", "Freezes", "Crashes", "Other");
+
+        // sets default choices
+        deviceChoiceBox.setValue("Device");
+        issueChoiceBox.setValue("Issue");
+
+        // sets up tickets tab table
+        setupTicketsTableColumns();
+
+        // loads all the tickets in the database
         loadAllTickets();
+
+        // activates listener
         setupRowSelection();
     }
 
@@ -44,7 +66,7 @@ public class WorkerHomePageController {
     // Buttons
     @FXML private Button logoutButton;
 
-    // TABLEVIEW + COLUMNS
+    // tickets tab table elements
     @FXML private TableView<Tickets> ticketsTableView;
     @FXML private TableColumn<Tickets, String> subjectColumn;
     @FXML private TableColumn<Tickets, String> issueColumn;
@@ -52,13 +74,26 @@ public class WorkerHomePageController {
     @FXML private TableColumn<Tickets, Boolean> completionColumn;
     @FXML private TableColumn<Tickets, String> userColumn;
 
-    // SIDE PANEL FIELDS
+    // tickets tab side panel elements
     @FXML private Label subjectLabel;
     @FXML private Label deviceLabel;
     @FXML private Label issueLabel;
     @FXML private Label userLabel;
     @FXML private TextArea descriptionTextArea;
     @FXML private CheckBox completionCheckBox;
+
+    // updates side panel table elements
+    @FXML private TableView<Updates> updatesTableView;
+    @FXML private TableColumn<Updates, String> updatesSubjectColumn;
+
+    // updates creation elements
+    @FXML private TextField updatesSubjectTextField;
+    @FXML private ChoiceBox<String> deviceChoiceBox;
+    @FXML private ChoiceBox<String> issueChoiceBox;
+    @FXML private TextArea updatesDescriptionTextArea;
+    @FXML private Button submitUpdateButton;
+    @FXML private Label errorLabel;
+
 
     private Tickets selectedTicket;
 
@@ -80,8 +115,22 @@ public class WorkerHomePageController {
         TicketManagerApplication.setRoot("WorkerLoginPage");
     }
 
+    // this method is activated when the submit update button is clicked and submits an update and clears the fields
+    @FXML
+    private void submitUpdateButtonClicked() throws IOException{
+        if(createUpdate()){
+            updatesSubjectTextField.setText("");
+            updatesDescriptionTextArea.setText("");
+            deviceChoiceBox.setValue("Device");
+            issueChoiceBox.setValue("Issue");
+            errorLabel.setText("");
+            updatesTableView.refresh();
+        }
+    }
+
+
     // this method sets up each of the columns in the table to be able to display the values
-    private void setupTableColumns() {
+    private void setupTicketsTableColumns() {
         subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
         issueColumn.setCellValueFactory(new PropertyValueFactory<>("issueType"));
         deviceColumn.setCellValueFactory(new PropertyValueFactory<>("deviceInfo"));
@@ -157,5 +206,44 @@ public class WorkerHomePageController {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
+    }
+
+        /*
+    this method perform 2 actions
+        - checks all fields are filled out
+        - creates an update in firestore
+     */
+    private boolean createUpdate() throws IOException{
+
+        // checks all fields
+        if(updatesSubjectTextField.getText().isEmpty() ||
+                updatesDescriptionTextArea.getText().isEmpty() ||
+                deviceChoiceBox.getValue().contentEquals("Device") ||
+                issueChoiceBox.getValue().contentEquals("Issue")){
+
+            errorLabel.setText("all fields must be properly filled out");
+            return false;
+
+        }
+
+        // create ticket
+        Map<String, Object> userMap = new HashMap<>();
+
+        // gets ID
+        DocumentReference docRef =
+                TicketManagerApplication.fstore.collection("Updates").document();
+
+        String ID = docRef.getId();   // <-- Firestore-generated ID
+
+        userMap.put("ID", ID);
+        userMap.put("subject", updatesSubjectTextField.getText());
+        userMap.put("deviceInfo", deviceChoiceBox.getValue());
+        userMap.put("issueType", issueChoiceBox.getValue());
+        userMap.put("description", updatesDescriptionTextArea.getText());
+
+        ApiFuture<WriteResult> result = docRef.set(userMap);
+
+        return true;
+
     }
 }
