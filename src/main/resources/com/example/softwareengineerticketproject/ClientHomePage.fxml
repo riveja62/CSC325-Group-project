@@ -16,9 +16,17 @@
                            <children>
                               <VBox fx:id="VBox1" prefHeight="325.0" prefWidth="166.0">
                                  <children>
-                                    <Label prefHeight="59.0" prefWidth="166.0" text="Label" />
-                                 </children>
-                              </VBox>
+                                    <Label text="Past Tickets" underline="true" />
+                                    <TableView fx:id="createTable" prefHeight="309.0" prefWidth="166.0">
+                                      <columns>
+                                        <TableColumn fx:id="createSubjectColumn" prefWidth="75.0" text="Subject" />
+                                        <TableColumn fx:id="createCompletedColumn" prefWidth="75.0" text="Completed" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children></VBox>
                               <VBox prefHeight="325.0" prefWidth="434.0">
                                  <children>
                                     <Label text="Subject">
@@ -28,7 +36,10 @@
                                     <TextField fx:id="subjectTextField" />
                                     <HBox alignment="CENTER" prefHeight="38.0" prefWidth="434.0" spacing="30.0">
                                        <children>
-                                          <Label text="Description" />
+                                          <Label text="Description">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                           <ChoiceBox fx:id="deviceChoiceBox" prefWidth="150.0" />
                                           <ChoiceBox fx:id="issueChoiceBox" prefWidth="150.0" />
                                        </children>

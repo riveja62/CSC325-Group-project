@@ -2,13 +2,20 @@ package com.example.softwareengineerticketproject;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /*
 This class is the controller for the client home page, it provides the ability for it to function. It contains these
@@ -18,6 +25,8 @@ methods:
     * logoutButtonClicked - allows logout button to work
     * submitTicketButtonClicked - allows submit ticket button to work
     * createTicket - this creates a new ticket in firestore
+    * setupCreateTableColumns - this sets up the create tab table for displaying tickets
+    * loadAllClientTickets - this is a query for the clients tickets
 
  */
 
@@ -37,7 +46,17 @@ public class ClientHomePageController {
         // sets default choices
         deviceChoiceBox.setValue("Device");
         issueChoiceBox.setValue("Issue");
+
+        //sets up create tab table
+        setupCreateTableColumns();
+        loadAllClientTickets();
     }
+
+    // create tab table elements
+    @FXML private TableView<Tickets> createTable;
+    @FXML private TableColumn<Tickets, String> createSubjectColumn;
+    @FXML private TableColumn<Tickets, Boolean> createCompletedColumn;
+
 
     // choice boxes
     @FXML
@@ -96,7 +115,7 @@ public class ClientHomePageController {
     }
 
     /*
-    this method perform x actions
+    this method perform 2 actions
         - checks all fields are filled out
         - creates a ticket in firestore
      */
@@ -136,5 +155,43 @@ public class ClientHomePageController {
 
 
     }
+
+    // this method sets up each of the columns in the create tab table to be able to display the values
+    private void setupCreateTableColumns() {
+        createSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        createCompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completion"));
+    }
+
+    // this method loads all the clients tickets
+    private void loadAllClientTickets() {
+        try {
+            ApiFuture<QuerySnapshot> future =
+                    TicketManagerApplication.fstore.collection("Tickets")
+                            .whereEqualTo("userID", sessionUsername)
+                            .get();
+
+            List<QueryDocumentSnapshot> docs = future.get().getDocuments();
+            ObservableList<Tickets> ticketList = FXCollections.observableArrayList();
+
+            for (QueryDocumentSnapshot doc : docs) {
+                Tickets t = new Tickets(
+                        doc.getString("ID"),
+                        doc.getString("subject"),
+                        doc.getString("deviceInfo"),
+                        doc.getString("issueType"),
+                        doc.getBoolean("completion"),
+                        doc.getString("descriptionIssue"),
+                        doc.getString("userID")
+                );
+                ticketList.add(t);
+            }
+
+            createTable.setItems(ticketList);
+
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
