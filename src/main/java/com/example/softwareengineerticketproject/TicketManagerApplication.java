@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+//launches the application
 public class TicketManagerApplication extends Application {
     public static Scene scene;
 
